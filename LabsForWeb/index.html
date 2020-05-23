@@ -1,0 +1,49 @@
+<!Doctype html>
+<html lang="en" id="ggg">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body id="lll">
+<h1 id="text">Finished of Laba</h1>
+<div id="write"></div>
+<script>
+    var str;
+    var dict = {};
+
+    function f() {
+        f1(document);
+        let wr = document.getElementById("write");
+        wr.innerHTML += str;
+
+        wr.innerHTML += "List of elements: ";
+
+        for (let i in dict) {
+            wr.innerHTML += i + ': ' + dict[i] + " ,";
+        }
+    }
+
+    function f1(item) {
+        if (item.childNodes) {
+            [].forEach.call(item.childNodes, function (i) {
+                f1(i);
+
+                if (i.tagName !== undefined) {
+                    str += "<p>" + i.tagName + " " + i.nodeType;
+
+                    if (dict[i.tagName] === undefined) dict[i.tagName] = 1;
+                    else dict[i.tagName]++;
+                } else str += "<p>" + i;
+            })
+        }
+    }
+    window.onload = f();
+</script>
+</body>
+
+</html>
